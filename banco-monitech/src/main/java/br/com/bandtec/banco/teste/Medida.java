@@ -48,7 +48,10 @@ public class Medida {
         timer1.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                con.update("INSERT INTO medida VALUES(null, ?, ?, ?, now(), ?)",
+                con.update("INSERT INTO medida "
+                        + "(porcentagemCPU, qtdMemoriaRam, "
+                        + "qtdEspacoDisco, registro, FK_Usuario) "
+                        + "VALUES(?, ?, ?, GETDATE(), ?)",
                         getPorcentagemCPU(),
                         getQtdMemoriaRam(),
                         getQtdEspacoDisco(),

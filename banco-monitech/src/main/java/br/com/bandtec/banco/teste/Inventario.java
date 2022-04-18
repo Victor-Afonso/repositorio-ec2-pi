@@ -45,7 +45,9 @@ public class Inventario {
     }
 
     public void setInventario(String id) {
-        con.update("INSERT INTO inventario VALUES(null, ?, ?, ?, ?, ?)",
+        con.update("INSERT INTO inventario (processador, espacoDisco,"
+                + " memoriaRam, coreProcessador, FK_Usuario) "
+                + "VALUES(?, ?, ?, ?, ?)",
                 this.getProcessador(),
                 this.getEspacoDiscoTotal(),
                 this.getMemoriaRamTotal(),
