@@ -265,6 +265,7 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         TelaConfigurado tela1 = new TelaConfigurado();
         TelaNaoConfigurado tela2 = new TelaNaoConfigurado();
+        TelaCadastro tela3 = new TelaCadastro();
 
         String usuario = txtLoginEmail.getText();
         String senha = txtLoginSenha.getText();
@@ -272,24 +273,25 @@ public class Login extends javax.swing.JFrame {
         if (validar.validarLogin(usuario, senha, validar.getEmailAdmin(), validar.getSenhaAdmin())) {
             lblValidacao.setText("Entrando, Aguarde...");
             lblValidacao.setForeground(Color.BLUE);
-            String hostname = null;
-            try {
-                hostname = InetAddress.getLocalHost().getHostName();
-            } catch (UnknownHostException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            String id = validar.getIdUsuario(hostname);
-
-            if (id.isEmpty()) {
-                tela2.setVisible(true);
-            } else {
-                tela1.setVisible(true);
-               
-                inventario.setInventario(id);
-                medida.setMedida(id);
-                
-            }
+            tela3.setVisible(true);
+//            String hostname = null;
+//            try {
+//                hostname = InetAddress.getLocalHost().getHostName();
+//            } catch (UnknownHostException ex) {
+//                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//
+//            String id = validar.getIdUsuario(hostname);
+//
+//            if (id.isEmpty()) {
+//                tela2.setVisible(true);
+//            } else {
+//                tela1.setVisible(true);
+//               
+//                inventario.setInventario(id);
+//                medida.setMedida(id);
+//                
+//            }
         } else {
             lblValidacao.setText("Usuário ou senha inválidos");
             lblValidacao.setForeground(Color.RED);

@@ -1,7 +1,12 @@
 package br.com.bandtec.banco.teste;
 
 import com.github.britooo.looca.api.core.Looca;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.jdbc.core.JdbcTemplate;
+import swing.Login;
 
 public class Inventario {
 
@@ -45,14 +50,20 @@ public class Inventario {
     }
 
     public void setInventario(String id) {
-        con.update("INSERT INTO inventario (processador, espacoDisco,"
-                + " memoriaRam, coreProcessador, FK_Usuario) "
-                + "VALUES(?, ?, ?, ?, ?)",
+        String hostname = null;
+            try {
+                hostname = InetAddress.getLocalHost().getHostName();
+            } catch (UnknownHostException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        con.update("INSERT INTO maquina (processador, espacoDisco,"
+                + " memoriaRam, coreProcessador, FK_Usuario, hostname) "
+                + "VALUES(?, ?, ?, ?, ?, ?)",
                 this.getProcessador(),
                 this.getEspacoDiscoTotal(),
                 this.getMemoriaRamTotal(),
                 this.getCoreProcessador(),
-                id);
+                id, hostname);
     }
 
     @Override
