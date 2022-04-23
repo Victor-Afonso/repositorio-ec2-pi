@@ -36,8 +36,8 @@ public class Validacoes {
     }
 
     public String getIdHostname(String hostname) {
-        List<Usuario> usuarioId = con.query("SELECT ID FROM maquina "
-                + "WHERE HOSTNAME =? order by registro desc limit 1",
+        List<Usuario> usuarioId = con.query("SELECT TOP 1 ID FROM maquina "
+                + "WHERE HOSTNAME =? order by registro desc",
                 new BeanPropertyRowMapper<>(Usuario.class), hostname);
         String formatar = usuarioId.toString().replace("Usuario{id=", "")
                 .replace("nome=null", "").replace("email=null", "")
