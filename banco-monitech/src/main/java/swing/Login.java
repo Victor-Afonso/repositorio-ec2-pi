@@ -4,7 +4,7 @@
  */
 package swing;
 
-import br.com.bandtec.banco.teste.Inventario;
+import br.com.bandtec.banco.teste.Maquina;
 import br.com.bandtec.banco.teste.Medida;
 import br.com.bandtec.banco.teste.Usuario;
 import java.awt.Color;
@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class Login extends javax.swing.JFrame {
 
     Validacoes validar = new Validacoes();
-    Inventario inventario = new Inventario();
+    Maquina maquina = new Maquina();
     Medida medida = new Medida();
 
     /**
@@ -274,24 +274,7 @@ public class Login extends javax.swing.JFrame {
             lblValidacao.setText("Entrando, Aguarde...");
             lblValidacao.setForeground(Color.BLUE);
             tela3.setVisible(true);
-//            String hostname = null;
-//            try {
-//                hostname = InetAddress.getLocalHost().getHostName();
-//            } catch (UnknownHostException ex) {
-//                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//
-//            String id = validar.getIdUsuario(hostname);
-//
-//            if (id.isEmpty()) {
-//                tela2.setVisible(true);
-//            } else {
-//                tela1.setVisible(true);
-//               
-//                inventario.setInventario(id);
-//                medida.setMedida(id);
-//                
-//            }
+
         } else {
             lblValidacao.setText("Usuário ou senha inválidos");
             lblValidacao.setForeground(Color.RED);

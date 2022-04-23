@@ -35,14 +35,27 @@ public class Validacoes {
         return senha.get(0).toString().replace("{SENHA=", "").replace("}", "");
     }
 
-    public String getIdUsuario(String hostname) {
-        List<Usuario> usuarioId = con.query("SELECT ID FROM usuario "
-                + "WHERE HOSTNAME =?",
+    public String getIdHostname(String hostname) {
+        List<Usuario> usuarioId = con.query("SELECT ID FROM maquina "
+                + "WHERE HOSTNAME =? order by registro desc limit 1",
                 new BeanPropertyRowMapper<>(Usuario.class), hostname);
         String formatar = usuarioId.toString().replace("Usuario{id=", "")
                 .replace("nome=null", "").replace("email=null", "")
-                .replace("senha=null", "").replace("funcao=null", "")
+                .replace("senha=null", "").replace("cargo=null", "")
                 .replace("hostname=null", "").replace("FK_Gerente=null", "")
+                .replace("FK_Equipe=null}", "").replaceAll(",", "")
+                .replaceAll(" ", "").replace("[", "").replace("]", "");
+    return formatar;
+    }
+    
+    public String getIdUsuarioEmail(String email) {
+        List<Usuario> usuarioId = con.query("SELECT ID FROM usuario "
+                + "WHERE EMAIL =?",
+                new BeanPropertyRowMapper<>(Usuario.class), email);
+        String formatar = usuarioId.toString().replace("Usuario{id=", "")
+                .replace("nome=null", "").replace("email=null", "")
+                .replace("senha=null", "").replace("cargo=null", "")
+                .replace("FK_Gerente=null", "")
                 .replace("FK_Equipe=null}", "").replaceAll(",", "")
                 .replaceAll(" ", "").replace("[", "").replace("]", "");
     return formatar;

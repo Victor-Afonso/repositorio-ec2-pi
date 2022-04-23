@@ -13,7 +13,7 @@ public class Medida {
     private Double qtdMemoriaRam;
     private Double qtdEspacoDisco;
     private String registro;
-    private Integer FK_Usuario;
+    private Integer FK_Maquina;
 
     public Medida() {
     }
@@ -43,14 +43,27 @@ public class Medida {
 
     public void setMedida(String id) {
         int delay = 5000;
-        int interval = 60000;
+        int interval = 15000;
 
         timer1.scheduleAtFixedRate(new TimerTask() {
+//            @Override
+//            public void run() {
+//                con.update("INSERT INTO medida "
+//                        + "(porcentagemCPU, qtdMemoriaRam, "
+//                        + "qtdEspacoDisco, registro, FK_Maquina) "
+//                        + "VALUES(?, ?, ?, now(), ?)",
+//                        getPorcentagemCPU(),
+//                        getQtdMemoriaRam(),
+//                        getQtdEspacoDisco(),
+//                        id);
+//            }
+
+            //Azure
             @Override
             public void run() {
                 con.update("INSERT INTO medida "
                         + "(porcentagemCPU, qtdMemoriaRam, "
-                        + "qtdEspacoDisco, registro, FK_Usuario) "
+                        + "qtdEspacoDisco, registro, FK_Maquina) "
                         + "VALUES(?, ?, ?, GETDATE(), ?)",
                         getPorcentagemCPU(),
                         getQtdMemoriaRam(),
@@ -65,7 +78,7 @@ public class Medida {
         return "Medida{" + "id=" + id + ", porcentagemCpu="
                 + porcentagemCpu + ", qtdMemoriaRam=" + qtdMemoriaRam
                 + ", qtdEspacoDisco=" + qtdEspacoDisco + ", registro="
-                + registro + ", FK_Usuario=" + FK_Usuario + '}';
+                + registro + ", FK_Maquina=" + FK_Maquina + '}';
     }
 
 }

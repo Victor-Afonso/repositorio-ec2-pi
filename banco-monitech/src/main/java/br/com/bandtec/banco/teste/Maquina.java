@@ -8,16 +8,16 @@ import java.util.logging.Logger;
 import org.springframework.jdbc.core.JdbcTemplate;
 import swing.Login;
 
-public class Inventario {
+public class Maquina {
 
     private Integer id;
-    private String cpu;
-    private Integer coreCpu;
+    private String processador;
+    private Integer coreProcessador;
     private Double espacoDisco;
     private Double memoriaRam;
     private Integer FK_Usuario;
 
-    public Inventario() {
+    public Maquina() {
     }
 
     Connection config = new Connection();
@@ -49,16 +49,27 @@ public class Inventario {
         return looca.getProcessador().getNumeroCpusFisicas();
     }
 
-    public void setInventario(String id) {
+    public void setMaquina(String id) {
         String hostname = null;
-            try {
-                hostname = InetAddress.getLocalHost().getHostName();
-            } catch (UnknownHostException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        try {
+            hostname = InetAddress.getLocalHost().getHostName();
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //MySQL
+//        con.update("INSERT INTO maquina (processador, espacoDisco,"
+//                + " memoriaRam, coreProcessador, FK_Usuario, hostname, registro) "
+//                + "VALUES(?, ?, ?, ?, ?, ?, now())",
+//                this.getProcessador(),
+//                this.getEspacoDiscoTotal(),
+//                this.getMemoriaRamTotal(),
+//                this.getCoreProcessador(),
+//                id, hostname);
+        
+        //AZURE
         con.update("INSERT INTO maquina (processador, espacoDisco,"
-                + " memoriaRam, coreProcessador, FK_Usuario, hostname) "
-                + "VALUES(?, ?, ?, ?, ?, ?)",
+                + " memoriaRam, coreProcessador, FK_Usuario, hostname, registro) "
+                + "VALUES(?, ?, ?, ?, ?, ?, GETDATE())",
                 this.getProcessador(),
                 this.getEspacoDiscoTotal(),
                 this.getMemoriaRamTotal(),
@@ -68,10 +79,10 @@ public class Inventario {
 
     @Override
     public String toString() {
-        return String.format("\nID: %d\nCPU: %s\nCORE_CPU: %d"
+        return String.format("\nID: %d\nPROCESSADOR: %s\nCORE_PROCESSADOR: %d"
                 + "\nESPACO_DISCO: %.2f"
                 + "\nMEMORIA_RAM: %.2f\nFK_USUARIO: %d",
-                this.id, this.cpu, this.coreCpu, this.espacoDisco,
+                this.id, this.processador, this.coreProcessador, this.espacoDisco,
                 this.memoriaRam, this.FK_Usuario);
     }
 

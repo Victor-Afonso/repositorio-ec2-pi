@@ -26,7 +26,6 @@ public class TestDatabase {
         
         Looca looca = new Looca();
         
-        System.out.println(looca.getProcessador().getUso());
         //h2 drop tabelas
 //        con.execute("SET foreign_key_checks = 0");
 //        con.execute("DROP TABLE IF EXISTS medida");

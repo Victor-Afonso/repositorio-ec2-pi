@@ -4,6 +4,13 @@
  */
 package swing;
 
+import br.com.bandtec.banco.teste.Maquina;
+import br.com.bandtec.banco.teste.Medida;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Aluno
@@ -13,6 +20,12 @@ public class TelaCadastro extends javax.swing.JFrame {
     /**
      * Creates new form TelaCadastro
      */
+    Validacoes validar = new Validacoes();
+    TelaConfigurado tela1 = new TelaConfigurado();
+    TelaNaoConfigurado tela2 = new TelaNaoConfigurado();
+    Maquina maquina = new Maquina();
+    Medida medida = new Medida();
+
     public TelaCadastro() {
         initComponents();
     }
@@ -114,24 +127,34 @@ public class TelaCadastro extends javax.swing.JFrame {
 
     private void btBuscarIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarIdActionPerformed
         // TODO add your handling code here:
-        //            String hostname = null;
-//            try {
-//                hostname = InetAddress.getLocalHost().getHostName();
-//            } catch (UnknownHostException ex) {
-//                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//
-//            String id = validar.getIdUsuario(hostname);
-//
-//            if (id.isEmpty()) {
-//                tela2.setVisible(true);
-//            } else {
-//                tela1.setVisible(true);
-//               
-//                inventario.setInventario(id);
-//                medida.setMedida(id);
-//                
-//            }
+        String email = txtEmail.getText();
+
+        String idUsuario = validar.getIdUsuarioEmail(email);
+
+        if (idUsuario.isEmpty()) {
+            tela2.setVisible(true);
+        } else {
+            tela1.setVisible(true);
+
+            maquina.setMaquina(idUsuario);
+
+        }
+
+        String hostname = null;
+        try {
+            hostname = InetAddress.getLocalHost().getHostName();
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String idHostname = validar.getIdHostname(hostname);
+
+        if (idHostname.isEmpty()) {
+            tela2.setVisible(true);
+        } else {
+            tela1.setVisible(true);
+
+            medida.setMedida(idHostname);
+        }
     }//GEN-LAST:event_btBuscarIdActionPerformed
 
     /**

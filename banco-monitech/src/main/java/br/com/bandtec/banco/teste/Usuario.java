@@ -9,8 +9,7 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
-    private String funcao;
-    private String hostname;
+    private String cargo;
     private Integer FK_Gerente;
     private Integer FK_Equipe;
 
@@ -49,12 +48,12 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public String getFuncao() {
-        return funcao;
+    public String getCargo() {
+        return cargo;
     }
 
-    public void setFuncao(String funcao) {
-        this.funcao = funcao;
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
     public Integer getFK_Gerente() {
@@ -73,22 +72,13 @@ public class Usuario {
         this.FK_Equipe = FK_Equipe;
     }
 
-    public String getHostname() {
-        return hostname;
-    }
-
-    public void setHostname(String hostname) {
-        this.hostname = hostname;
-    }
-
     @Override
     public String toString() {
         return "Usuario{" + "id=" + id + ", nome=" + nome + ", "
                 + "email=" + email + ", senha=" + senha + ", "
-                + "funcao=" + funcao + ", hostname=" + hostname + ","
-                + " FK_Gerente=" + FK_Gerente + ", FK_Equipe=" 
+                + "cargo=" + cargo + ","
+                + " FK_Gerente=" + FK_Gerente + ", FK_Equipe="
                 + FK_Equipe + '}';
     }
 
-    
 }

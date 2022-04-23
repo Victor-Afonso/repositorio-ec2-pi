@@ -5,6 +5,7 @@ public class Equipe {
     private Integer id;
     private String nome;
     private String area;
+    private String cor;
 
     public Integer getId() {
         return id;
@@ -30,11 +31,17 @@ public class Equipe {
         this.area = area;
     }
 
-    @Override
-    public String toString() {
-        return String.format("\nID: %d\nNOME: %s\nAREA: %s\n",
-                this.id, this.nome, this.area);
+    public String getCor() {
+        return cor;
     }
 
-    
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    @Override
+    public String toString() {
+        return "Equipe{" + "id=" + id + ", nome=" + nome + ", area=" + area + ", cor=" + cor + '}';
+    }
+
 }
