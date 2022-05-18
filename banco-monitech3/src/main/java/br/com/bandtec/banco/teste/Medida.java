@@ -1,8 +1,11 @@
 package br.com.bandtec.banco.teste;
 
 import com.github.britooo.looca.api.core.Looca;
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.cglib.core.Local;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -20,6 +23,7 @@ public class Medida {
     Looca looca = new Looca();
     Connection config = new Connection();
     JdbcTemplate con = new JdbcTemplate(config.getDatasource());
+    Slack slack = new Slack();
 
     public Double getPorcentagemCPU() {
         return looca.getProcessador().getUso();
@@ -27,19 +31,21 @@ public class Medida {
 
     public Double getQtdMemoriaRam() {
         Long memoriaByte = looca.getMemoria().getEmUso();
-        Double memoriaGigaByte = memoriaByte / 1073741824.0;
+        Double memoriaGigaByte = memoriaByte / 1e+9;
 
         return memoriaGigaByte;
     }
 
     public Double getQtdEspacoDisco() {
         Long discoByte = looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel();
-        Double discoGigaByte = discoByte / 1073741824.0;
+        Double discoGigaByte = discoByte / 1e+9;
 
         return discoGigaByte;
     }
 
     Timer timer1 = new Timer();
+
+    Maquina maquina = new Maquina();
 
     public void setMedida(String id) {
         int delay = 5000;
@@ -61,14 +67,32 @@ public class Medida {
             //Azure
             @Override
             public void run() {
+                Double discoTotal = maquina.getEspacoDiscoTotal();
+                Double cpu = getPorcentagemCPU();
+                Double disco = getQtdEspacoDisco();
+                Double discoPorcentagem = ((disco * 100) / discoTotal) - 100.0;
                 con.update("INSERT INTO medida "
                         + "(porcentagemCPU, qtdMemoriaRam, "
                         + "qtdEspacoDisco, registro, FK_Maquina) "
                         + "VALUES(?, ?, ?, GETDATE(), ?)",
-                        getPorcentagemCPU(),
+                        cpu,
                         getQtdMemoriaRam(),
-                        getQtdEspacoDisco(),
+                        disco,
                         id);
+                try {
+                    slack.alertaCpu(cpu);
+                } catch (IOException ex) {
+                    Logger.getLogger(Medida.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Medida.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    slack.alertaDisco(discoPorcentagem);
+                } catch (IOException ex) {
+                    Logger.getLogger(Medida.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Medida.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }, delay, interval);
     }

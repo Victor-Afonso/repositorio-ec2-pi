@@ -22,7 +22,7 @@ public class Log {
     }
 
     public void sucesso(String texto) {
-        File log = new File("C:\\Users\\Victor\\Desktop\\Log.txt");
+        File log = new File("Log.txt");
         LocalDateTime dateTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String tempo = dateTime.format(formatter);
@@ -34,7 +34,7 @@ public class Log {
             FileWriter arq = new FileWriter(log, true);
 
             try (BufferedWriter arqGravar = new BufferedWriter(arq)) {
-                String formatador = String.format("\n[%s] %s com sucesso", tempo, texto);
+                String formatador = String.format("\n[%s] [SUCESSO] %s", tempo, texto);
                 arqGravar.write(formatador);
             }
 
@@ -44,7 +44,7 @@ public class Log {
     }
 
     public void erro(String texto) {
-        File log = new File("C:\\Users\\Victor\\Desktop\\Log.txt");
+        File log = new File("Log.txt");
         LocalDateTime dateTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String tempo = dateTime.format(formatter);
@@ -56,7 +56,7 @@ public class Log {
             FileWriter arq = new FileWriter(log, true);
 
             try (BufferedWriter arqGravar = new BufferedWriter(arq)) {
-                String formatador = String.format("\n[%s] %s com erro", tempo, texto);
+                String formatador = String.format("\n[%s] [ERRO] %s", tempo, texto);
                 arqGravar.write(formatador);
             }
 

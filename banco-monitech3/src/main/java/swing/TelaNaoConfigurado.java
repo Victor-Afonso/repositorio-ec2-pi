@@ -4,6 +4,8 @@
  */
 package swing;
 
+import br.com.bandtec.banco.teste.Log;
+
 /**
  *
  * @author anton

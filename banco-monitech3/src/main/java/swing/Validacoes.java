@@ -5,6 +5,7 @@
 package swing;
 
 import br.com.bandtec.banco.teste.Connection;
+import br.com.bandtec.banco.teste.Log;
 import br.com.bandtec.banco.teste.Usuario;
 import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -18,10 +19,18 @@ public class Validacoes {
 
     Connection config = new Connection();
     JdbcTemplate con = new JdbcTemplate(config.getDatasource());
+    Log log = new Log();
 
     public Boolean validarLogin(String email, String senha, String emailBanco, String senhaBanco) {
         Boolean login;
         login = email.equals(emailBanco) && senha.equals(senhaBanco);
+        if (login) {
+            log.sucesso(String.format("Ao realizar "
+                    + "login com o email %s", email));
+        } else {
+            log.erro(String.format("Ao realizar "
+                    + "login com o email %s", email));
+        }
         return login;
     }
 
@@ -45,9 +54,9 @@ public class Validacoes {
                 .replace("hostname=null", "").replace("FK_Gerente=null", "")
                 .replace("FK_Equipe=null}", "").replaceAll(",", "")
                 .replaceAll(" ", "").replace("[", "").replace("]", "");
-    return formatar;
+        return formatar;
     }
-    
+
     public String getIdUsuarioEmail(String email) {
         List<Usuario> usuarioId = con.query("SELECT ID FROM usuario "
                 + "WHERE EMAIL =?",
@@ -58,6 +67,15 @@ public class Validacoes {
                 .replace("FK_Gerente=null", "")
                 .replace("FK_Equipe=null}", "").replaceAll(",", "")
                 .replaceAll(" ", "").replace("[", "").replace("]", "");
-    return formatar;
+        if (formatar.isEmpty()) {
+            log.erro(String.format("Não "
+                    + "conseguiu encontrar "
+                    + "o id do email %s", email));
+        } else {
+            log.sucesso(String.format(""
+                    + "Conseguiu encontrar "
+                    + "o id do email %s", email));
+        }
+        return formatar;
     }
 }

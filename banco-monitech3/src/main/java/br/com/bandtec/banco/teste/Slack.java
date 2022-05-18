@@ -17,30 +17,40 @@ import org.json.JSONObject;
  */
 public class Slack {
 
-    private static HttpClient client = HttpClient.newHttpClient();
-    private static final String URL = "https://hooks.slack.com/services/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";
+    private static final HttpClient client = HttpClient.newHttpClient();
+    private static final String URL = "https://hooks.slack.com/services/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";
 
     public static void sendMessage(JSONObject content) throws IOException, InterruptedException {
+        try {
 
-        HttpRequest request = HttpRequest.newBuilder(
-                URI.create(URL))
-                .header("accept", "application/json")
-                .POST(HttpRequest.BodyPublishers.ofString(content.toString()))
-                .build();
+            HttpRequest request = HttpRequest.newBuilder(
+                    URI.create(URL))
+                    .header("accept", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(content.toString()))
+                    .build();
 
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        System.out.println(String.format("Status: %s", response.statusCode()));
-        System.out.println(String.format("Response: %s", response.body()));
+            System.out.println(String.format("Status: %s", response.statusCode()));
+            System.out.println(String.format("Response: %s", response.body()));
+
+            Log log = new Log();
+            log.sucesso("Alerta enviado ao Slack");
+        } catch (IOException | InterruptedException e) {
+            Log log = new Log();
+            log.erro(String.format("Não foi possível conectar ao"
+                    + " Slack exception %s", e.toString()));
+        }
     }
 
     public Slack() {
     }
 
     public void alertaDisco(Double disco) throws IOException, InterruptedException {
+        String porcentagem = "%";
         if (disco > 80.00) {
             JSONObject json = new JSONObject();
-            String alertaDisco = String.format("Alerta Disco está: %.2f ", disco);
+            String alertaDisco = String.format("Alerta Disco está em: %.2f %s", disco, porcentagem);
             json.put("text", alertaDisco);
             Slack.sendMessage(json);
         }
@@ -48,29 +58,19 @@ public class Slack {
     }
 
     public void alertaCpu(Double cpu) throws IOException, InterruptedException {
-        String porcentagem = "%"; 
+        String porcentagem = "%";
         if (cpu > 70.00 && cpu <= 90.00) {
             JSONObject json = new JSONObject();
-            String alertaCpu = String.format("Alerta CPU está: %.2f %s" , cpu, porcentagem);
+            String alertaCpu = String.format("Alerta CPU está em:%.2f %s", cpu, porcentagem);
             json.put("text", alertaCpu);
             Slack.sendMessage(json);
         }
         if (cpu > 90.00) {
             JSONObject json = new JSONObject();
-            String alertaCpu = String.format("Alerta de criticidade alto CPU está: %.2f %s", cpu, porcentagem);
+            String alertaCpu = String.format("Alerta critico CPU está: %.2f %s", cpu, porcentagem);
             json.put("text", alertaCpu);
             Slack.sendMessage(json);
 
-        }
-
-    }
-
-    public void alertaMemoriaRam(Double ram) throws IOException, InterruptedException {
-        if (ram > 4.0) {
-            JSONObject json = new JSONObject();
-            String alertaRam = String.format("Alerta de memoria RAM está: %.2f GB ", ram);
-            json.put("text", alertaRam);
-            Slack.sendMessage(json);
         }
 
     }

@@ -4,6 +4,7 @@
  */
 package swing;
 
+import br.com.bandtec.banco.teste.Log;
 import br.com.bandtec.banco.teste.Maquina;
 import br.com.bandtec.banco.teste.Medida;
 import java.net.InetAddress;
@@ -25,6 +26,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     TelaNaoConfigurado tela2 = new TelaNaoConfigurado();
     Maquina maquina = new Maquina();
     Medida medida = new Medida();
+    Log log = new Log();
 
     public TelaCadastro() {
         initComponents();
@@ -133,27 +135,27 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         if (idUsuario.isEmpty()) {
             tela2.setVisible(true);
+            log.erro("Ao configurar a máquina");
         } else {
-            tela1.setVisible(true);
 
             maquina.setMaquina(idUsuario);
 
-        }
+            String hostname = null;
+            try {
+                hostname = InetAddress.getLocalHost().getHostName();
+            } catch (UnknownHostException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            String idHostname = validar.getIdHostname(hostname);
 
-        String hostname = null;
-        try {
-            hostname = InetAddress.getLocalHost().getHostName();
-        } catch (UnknownHostException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        String idHostname = validar.getIdHostname(hostname);
-
-        if (idHostname.isEmpty()) {
-            tela2.setVisible(true);
-        } else {
-            tela1.setVisible(true);
-
-            medida.setMedida(idHostname);
+            if (idHostname.isEmpty()) {
+                tela2.setVisible(true);
+                log.erro("Ao configurar a máquina");
+            } else {
+                tela1.setVisible(true);
+                log.sucesso("Ao configurar a máquina");
+                medida.setMedida(idHostname);
+            }
         }
     }//GEN-LAST:event_btBuscarIdActionPerformed
 

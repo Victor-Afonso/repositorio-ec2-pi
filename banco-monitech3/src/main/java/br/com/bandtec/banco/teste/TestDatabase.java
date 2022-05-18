@@ -22,10 +22,9 @@ public class TestDatabase {
         StringBuilder createStatement2 = new StringBuilder();
         StringBuilder createStatement3 = new StringBuilder();
         StringBuilder createStatement4 = new StringBuilder();
-        
-        
+
         Looca looca = new Looca();
-        
+
         //h2 drop tabelas
 //        con.execute("SET foreign_key_checks = 0");
 //        con.execute("DROP TABLE IF EXISTS medida");
@@ -33,8 +32,6 @@ public class TestDatabase {
 //        con.execute("DROP TABLE IF EXISTS usuario");
 //        con.execute("DROP TABLE IF EXISTS equipe");
 //        con.execute("SET foreign_key_checks = 1");
-        
-
         // Criando o comando para criar tabela equipe.
         // o método append funciona como se fosse uma concatenação.
 //        createStatement1.append("CREATE TABLE equipe (");
@@ -87,13 +84,11 @@ public class TestDatabase {
 //
 //        // Executando o comando de criação de medida.
 //        con.execute(createStatement4.toString());
-        
         //Executando insert Admin h2
-         //con.update("INSERT INTO USUARIO VALUES(null, 'Admin', 'admin@gmail.com', 'Admin123', '10-09-2002', 'Admin', null, null)");
-
-         //String inserirUsuario = "INSERT INTO usuario VALUES(null,?,?,?,?,?,?,?)";
-         //con.update(inserirUsuario,"Admin", "admin@gmail.com", "Admin123", "2002-09-10", "Admin", null,null);
-         //System.out.println(validar.getEmailAdmin());
-         //System.out.println(validar.getSenhaAdmin());
+        //con.update("INSERT INTO USUARIO VALUES(null, 'Admin', 'admin@gmail.com', 'Admin123', '10-09-2002', 'Admin', null, null)");
+        //String inserirUsuario = "INSERT INTO usuario VALUES(null,?,?,?,?,?,?,?)";
+        //con.update(inserirUsuario,"Admin", "admin@gmail.com", "Admin123", "2002-09-10", "Admin", null,null);
+        //System.out.println(validar.getEmailAdmin());
+        //System.out.println(validar.getSenhaAdmin());
     }
 }
