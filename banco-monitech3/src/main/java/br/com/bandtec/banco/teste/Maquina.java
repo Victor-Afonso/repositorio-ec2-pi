@@ -18,6 +18,8 @@ public class Maquina {
     private Integer FK_Usuario;
     Connection config = new Connection();
     JdbcTemplate con = new JdbcTemplate(config.getDatasource());
+    ConnectionMysql configMysql = new ConnectionMysql();
+    JdbcTemplate conMysql = new JdbcTemplate(configMysql.getDatasource());
 
     public Maquina() {
     }
@@ -32,7 +34,7 @@ public class Maquina {
     public Double getMemoriaRamTotal() {
         Looca looca = new Looca();
         Long memoriaTotalByte = looca.getMemoria().getTotal();
-        Double memoriaGigaByte = memoriaTotalByte / 1e+9;
+        Double memoriaGigaByte = memoriaTotalByte / 1073741824.0;
         String formatar = String.format("%.2f", memoriaGigaByte);
         return memoriaGigaByte;
     }
@@ -40,7 +42,7 @@ public class Maquina {
     public Double getEspacoDiscoTotal() {
         Looca looca = new Looca();
         Long armazenamentoTotalByte = looca.getGrupoDeDiscos().getTamanhoTotal();
-        Double armazenamentoGigaByte = armazenamentoTotalByte / 1e+9;
+        Double armazenamentoGigaByte = armazenamentoTotalByte / 1073741824.0;
         String formatar = String.format("%.2f", armazenamentoGigaByte);
         return armazenamentoGigaByte;
     }
@@ -58,14 +60,14 @@ public class Maquina {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
         //MySQL
-//        con.update("INSERT INTO maquina (processador, espacoDisco,"
-//                + " memoriaRam, coreProcessador, FK_Usuario, hostname, registro) "
-//                + "VALUES(?, ?, ?, ?, ?, ?, now())",
-//                this.getProcessador(),
-//                this.getEspacoDiscoTotal(),
-//                this.getMemoriaRamTotal(),
-//                this.getCoreProcessador(),
-//                id, hostname);
+        conMysql.update("INSERT INTO maquina (processador, espacoDisco,"
+                + " memoriaRam, coreProcessador, FK_Usuario, hostname, registro) "
+                + "VALUES(?, ?, ?, ?, ?, ?, now())",
+                this.getProcessador(),
+                this.getEspacoDiscoTotal(),
+                this.getMemoriaRamTotal(),
+                this.getCoreProcessador(),
+                id, hostname);
         
         //AZURE
         con.update("INSERT INTO maquina (processador, espacoDisco,"
