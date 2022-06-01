@@ -30,6 +30,7 @@ public class TelaCadastro extends javax.swing.JFrame {
 
     public TelaCadastro() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

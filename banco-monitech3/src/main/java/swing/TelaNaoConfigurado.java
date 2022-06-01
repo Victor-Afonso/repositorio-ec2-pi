@@ -17,6 +17,7 @@ public class TelaNaoConfigurado extends javax.swing.JFrame {
      */
     public TelaNaoConfigurado() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
