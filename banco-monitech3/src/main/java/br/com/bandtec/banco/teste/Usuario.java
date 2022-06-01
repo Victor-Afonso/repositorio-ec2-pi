@@ -1,8 +1,5 @@
 package br.com.bandtec.banco.teste;
 
-import java.util.List;
-import org.springframework.jdbc.core.JdbcTemplate;
-
 public class Usuario {
 
     private Integer id;

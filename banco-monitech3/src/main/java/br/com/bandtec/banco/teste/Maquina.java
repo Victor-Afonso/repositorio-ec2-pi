@@ -35,7 +35,6 @@ public class Maquina {
         Looca looca = new Looca();
         Long memoriaTotalByte = looca.getMemoria().getTotal();
         Double memoriaGigaByte = memoriaTotalByte / 1073741824.0;
-        String formatar = String.format("%.2f", memoriaGigaByte);
         return memoriaGigaByte;
     }
 
@@ -43,7 +42,6 @@ public class Maquina {
         Looca looca = new Looca();
         Long armazenamentoTotalByte = looca.getGrupoDeDiscos().getTamanhoTotal();
         Double armazenamentoGigaByte = armazenamentoTotalByte / 1073741824.0;
-        String formatar = String.format("%.2f", armazenamentoGigaByte);
         return armazenamentoGigaByte;
     }
 

@@ -6,12 +6,7 @@ package swing;
 
 import br.com.bandtec.banco.teste.Maquina;
 import br.com.bandtec.banco.teste.Medida;
-import br.com.bandtec.banco.teste.Usuario;
 import java.awt.Color;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -263,8 +258,6 @@ public class Login extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        TelaConfigurado tela1 = new TelaConfigurado();
-        TelaNaoConfigurado tela2 = new TelaNaoConfigurado();
         TelaCadastro tela3 = new TelaCadastro();
 
         String usuario = txtLoginEmail.getText();

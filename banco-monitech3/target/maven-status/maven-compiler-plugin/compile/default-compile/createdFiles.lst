@@ -5,10 +5,8 @@ swing/Login$3.class
 br/com/bandtec/banco/teste/Connection.class
 br/com/bandtec/banco/teste/Slack.class
 swing/TelaCadastro$1.class
-br/com/bandtec/banco/teste/AppSlack.class
 br/com/bandtec/banco/teste/Medida$1.class
 swing/TelaCadastro$3.class
-br/com/bandtec/banco/teste/TestDatabase.class
 swing/TelaConfigurado$1.class
 br/com/bandtec/banco/teste/Maquina.class
 swing/TelaNaoConfigurado$1.class
