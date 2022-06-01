@@ -32,7 +32,7 @@ public class ConnectionMysql {
 //        this.datasource.setPassword("");
             // Não irá funcionar se você não criar um container exatamente igual o meu.
             //usuário utilizado em um container MySQL
-            this.datasource.setUsername("root");
+            this.datasource.setUsername("aluno");
             //senha padrao utilizada no container MySQL
             this.datasource.setPassword("sptech");
             

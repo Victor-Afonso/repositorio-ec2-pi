@@ -45,7 +45,7 @@ public class LoginCli {
         } while (!adminLogado);
 
         do {
-            System.out.println("\nInforme o email a a ser cadastrado:");
+            System.out.println("\nInforme o email a ser cadastrado:");
             String email = leitor.nextLine();
 
             String idUsuario = validar.getIdUsuarioEmail(email);

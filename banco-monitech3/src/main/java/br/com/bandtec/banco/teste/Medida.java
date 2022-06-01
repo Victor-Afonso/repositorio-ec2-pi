@@ -51,7 +51,7 @@ public class Medida {
 
     public void setMedida(String id) {
         int delay = 5000;
-        int interval = 15000;
+        int interval = 5000;
 
         timer1.scheduleAtFixedRate(new TimerTask() {
 
