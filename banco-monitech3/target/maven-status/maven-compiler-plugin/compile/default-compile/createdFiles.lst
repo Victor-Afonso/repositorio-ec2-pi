@@ -8,6 +8,7 @@ swing\TelaCadastro$3.class
 br\com\bandtec\banco\teste\ConnectionMysql.class
 swing\Login$3.class
 br\com\bandtec\banco\teste\Maquina.class
+.netbeans_automatic_build
 swing\Login.class
 swing\TelaConfigurado$1.class
 br\com\bandtec\banco\teste\Log.class

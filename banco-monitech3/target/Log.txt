@@ -1,0 +1,42 @@
+
+[06-06-2022 18:29:23] [SUCESSO] Conectado com a Azure
+[06-06-2022 18:29:23] [SUCESSO] Conectado com a Azure
+[06-06-2022 18:29:23] [SUCESSO] Conectado com o Docker Mysql
+[06-06-2022 18:29:23] [SUCESSO] Conectado com a Azure
+[06-06-2022 18:29:23] [SUCESSO] Conectado com o Docker Mysql
+[06-06-2022 18:29:24] [SUCESSO] Conectado com a Azure
+[06-06-2022 18:29:24] [SUCESSO] Conectado com o Docker Mysql
+[06-06-2022 18:29:34] [SUCESSO] Conectado com a Azure
+[06-06-2022 18:29:34] [SUCESSO] Conectado com a Azure
+[06-06-2022 18:29:34] [SUCESSO] Conectado com o Docker Mysql
+[06-06-2022 18:29:34] [SUCESSO] Conectado com a Azure
+[06-06-2022 18:29:34] [SUCESSO] Conectado com o Docker Mysql
+[06-06-2022 18:29:34] [SUCESSO] Conectado com a Azure
+[06-06-2022 18:29:34] [SUCESSO] Conectado com o Docker Mysql
+[06-06-2022 18:29:37] [ERRO] Ao realizar login com o email admin@montech.com
+[06-06-2022 18:29:45] [SUCESSO] Conectado com a Azure
+[06-06-2022 18:29:45] [SUCESSO] Conectado com a Azure
+[06-06-2022 18:29:45] [SUCESSO] Conectado com o Docker Mysql
+[06-06-2022 18:29:45] [SUCESSO] Conectado com a Azure
+[06-06-2022 18:29:45] [SUCESSO] Conectado com o Docker Mysql
+[06-06-2022 18:29:45] [SUCESSO] Conectado com a Azure
+[06-06-2022 18:29:45] [SUCESSO] Conectado com o Docker Mysql
+[06-06-2022 18:29:45] [SUCESSO] Ao realizar login com o email admin@monitech.com
+[06-06-2022 18:30:36] [SUCESSO] Conseguiu encontrar o id do email victor.afonso@monitech.com
+[06-06-2022 18:32:22] [SUCESSO] Conectado com a Azure
+[06-06-2022 18:32:22] [SUCESSO] Conectado com a Azure
+[06-06-2022 18:32:22] [SUCESSO] Conectado com o Docker Mysql
+[06-06-2022 18:32:23] [SUCESSO] Conectado com a Azure
+[06-06-2022 18:32:23] [SUCESSO] Conectado com o Docker Mysql
+[06-06-2022 18:32:23] [SUCESSO] Conectado com a Azure
+[06-06-2022 18:32:23] [SUCESSO] Conectado com o Docker Mysql
+[06-06-2022 18:32:31] [SUCESSO] Conectado com a Azure
+[06-06-2022 18:32:31] [SUCESSO] Conectado com a Azure
+[06-06-2022 18:32:31] [SUCESSO] Conectado com o Docker Mysql
+[06-06-2022 18:32:31] [SUCESSO] Conectado com a Azure
+[06-06-2022 18:32:31] [SUCESSO] Conectado com o Docker Mysql
+[06-06-2022 18:32:31] [SUCESSO] Conectado com a Azure
+[06-06-2022 18:32:31] [SUCESSO] Conectado com o Docker Mysql
+[06-06-2022 18:32:34] [SUCESSO] Ao realizar login com o email admin@monitech.com
+[06-06-2022 18:32:45] [SUCESSO] Conseguiu encontrar o id do email victor.afonso@monitech.com
+[06-06-2022 18:32:48] [SUCESSO] Ao configurar a máquina

@@ -21,7 +21,7 @@ public class ConnectionMysql {
 
             this.datasource.setUrl("jdbc:mysql://localhost:3306/monitech?useTimezone=true&serverTimezone=UTC");
  
-            this.datasource.setUsername("aluno");
+            this.datasource.setUsername("root");
             
             this.datasource.setPassword("sptech");
             
