@@ -33,8 +33,9 @@ public class Slack {
             String url9 = "Y9xWfVL6";
             String url10 = "fL0XhOQQ";
             String url11 = "2WF";
+            String URL = url1 + url2 + url3 + url4 + url5 + url6 + url7 + url8 + url9 + url10 + url11;
             HttpRequest request = HttpRequest.newBuilder(
-                    URI.create(url1 + url2 + url3 + url4 + url5 + url6 + url7 + url8 + url9 + url10 + url11))
+                    URI.create(URL))
                     .header("accept", "application/json")
                     .POST(HttpRequest.BodyPublishers.ofString(content.toString()))
                     .build();
