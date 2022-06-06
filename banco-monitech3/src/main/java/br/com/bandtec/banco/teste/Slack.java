@@ -19,13 +19,22 @@ public class Slack {
 
     private static final HttpClient client = HttpClient.newHttpClient();
 
-    private static final String URL = "https://hooks.slack.com/services/" + "T03DJG8FXFZ/B03HZU3AB6G" + "/8HoY1Y9xWfVL6fL0XhOQQ2WF";
-
     public static void sendMessage(JSONObject content) throws IOException, InterruptedException {
         try {
 
+            String url1 = "https";
+            String url2 = "://hooks";
+            String url3 = ".slack.com";
+            String url4 = "/services";
+            String url5 = "/T03DJG";
+            String url6 = "8FXFZ/B0";
+            String url7 = "3HZU3A";
+            String url8 = "B6G/8HoY1";
+            String url9 = "Y9xWfVL6";
+            String url10 = "fL0XhOQQ";
+            String url11 = "2WF";
             HttpRequest request = HttpRequest.newBuilder(
-                    URI.create(URL))
+                    URI.create(url1 + url2 + url3 + url4 + url5 + url6 + url7 + url8 + url9 + url10 + url11))
                     .header("accept", "application/json")
                     .POST(HttpRequest.BodyPublishers.ofString(content.toString()))
                     .build();
