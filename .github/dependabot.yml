@@ -9,5 +9,6 @@ updates:
     directory: "java-cli" # Location of package manifests
     schedule:
       interval: "daily"
-      time: "16:06"
+      time: "16:11"
       timezone: "America/Sao_Paulo"
+    target-branch: "develop"
