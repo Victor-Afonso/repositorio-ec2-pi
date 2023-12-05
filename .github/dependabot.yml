@@ -6,8 +6,8 @@
 version: 2
 updates:
   - package-ecosystem: "maven" # See documentation for possible values
-    directory: "./java-cli/" # Location of package manifests
+    directory: "java-cli" # Location of package manifests
     schedule:
       interval: "daily"
-      time: "16:02"
+      time: "16:06"
       timezone: "America/Sao_Paulo"
